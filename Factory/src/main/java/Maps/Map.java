@@ -7,7 +7,7 @@ public abstract class Map {
     // In case of further development of the RPG.
     public void display(int w, int h) {
         for (int i = 0; i < h + 2; i++) {
-            // Some framing for the map. Very unneccessary but looks good :)
+            // Some framing for the map. Very unnecessary but looks good :)
             if (i == 0 || i == h + 1) {
                 for (int k = 0; k < w + 2; k++) {
                     if (k == 0) System.out.print("- ");
