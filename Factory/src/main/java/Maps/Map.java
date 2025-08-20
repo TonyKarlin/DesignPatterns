@@ -1,10 +1,17 @@
 package Maps;
 
-public abstract class Map {
+import Tiles.Tile;
 
-    private void display() {
+public abstract class Map {
+    public void display(int w, int h) {
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                Tile tile = createTile();
+                System.out.println(tile.getCharacter());
+            }
+        }
 
     }
 
-    public abstract void createTile();
+    public abstract Tile createTile();
 }
