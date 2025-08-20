@@ -8,14 +8,16 @@ public class Game {
 
     public void createMap() {
         Scanner sc = new Scanner(System.in);
-
         System.out.println("Which Map would you like to play: ");
+        System.out.println("1. CityMap");
+        System.out.println("2. WildernessMap");
+
         if (sc.nextInt() == 1) {
-            Map map = new CityMap();
-            map.display(10, 8);
+            Map city = new CityMap();
+            city.display(10, 8);
         } else if (sc.nextInt() == 2) {
-            Map map = new WildernessMap();
-            map.display(10, 8);
+            Map wild = new WildernessMap();
+            wild.display(10, 8);
         } else {
             System.out.println("Invalid input. Please enter a choice between 1 & 2.");
         }
