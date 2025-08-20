@@ -6,18 +6,20 @@ import java.util.Scanner;
 
 public class Game {
 
-    public void createMap() {
+    public int menu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Which Map would you like to play: ");
         System.out.println("1. CityMap");
         System.out.println("2. WildernessMap");
 
-        int choice = sc.nextInt();
+        return sc.nextInt();
+    }
 
-        if (choice == 1) {
+    public void createMap(int id) {
+        if (id == 1) {
             Map city = new CityMap();
             city.display(10, 8);
-        } else if (choice == 2) {
+        } else if (id == 2) {
             Map wild = new WildernessMap();
             wild.display(10, 8);
         } else {
