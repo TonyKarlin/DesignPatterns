@@ -3,6 +3,8 @@ package Maps;
 import Tiles.Tile;
 
 public abstract class Map {
+    // I gave the method some parameters only for the purpose of player agency (for example small, med, large maps)
+    // In case of further development of the RPG.
     public void display(int w, int h) {
         for (int i = 0; i < h + 2; i++) {
             // Some framing for the map. Very unneccessary but looks good :)

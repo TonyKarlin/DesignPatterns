@@ -12,10 +12,12 @@ public class Game {
         System.out.println("1. CityMap");
         System.out.println("2. WildernessMap");
 
-        if (sc.nextInt() == 1) {
+        int choice = sc.nextInt();
+
+        if (choice == 1) {
             Map city = new CityMap();
             city.display(10, 8);
-        } else if (sc.nextInt() == 2) {
+        } else if (choice == 2) {
             Map wild = new WildernessMap();
             wild.display(10, 8);
         } else {
