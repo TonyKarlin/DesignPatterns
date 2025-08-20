@@ -9,8 +9,8 @@ public class Game {
     public int menu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Which Map would you like to play: ");
-        System.out.println("1. CityMap");
-        System.out.println("2. WildernessMap");
+        System.out.println("1. City");
+        System.out.println("2. Wilderness");
         System.out.print("Select: ");
 
         return sc.nextInt();
