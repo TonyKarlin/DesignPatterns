@@ -6,17 +6,17 @@ import Interfaces.*;
 public class AppleFactory extends UIFactory{
     @Override
     public Button createButton(String text) {
-        return new AppleButton();
+        return new AppleButton(text);
     }
 
     @Override
     public Checkbox createCheckbox(String text) {
-        return new AppleCheckbox();
+        return new AppleCheckbox(text);
     }
 
     @Override
     public TextField createTextField(String text) {
-        return new AppleTextField();
+        return new AppleTextField(text);
     }
 
 }

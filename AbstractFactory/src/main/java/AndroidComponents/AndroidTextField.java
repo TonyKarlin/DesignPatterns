@@ -3,9 +3,20 @@ package AndroidComponents;
 import Interfaces.TextField;
 
 public class AndroidTextField implements TextField {
+    String type = "Android";
+    String text;
+
+    public AndroidTextField(String text) {
+        this.text = text;
+    }
+
+    private String getType() {
+        return type;
+    }
+
     @Override
-    public void display(String text) {
-        System.out.println("TextField: Android");
+    public void display() {
+        System.out.println("TextField: " + getType());
         String contents = "| > " + text + " |";
 
         for (int i = 0; i <= 2; i++) {

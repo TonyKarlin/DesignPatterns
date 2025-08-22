@@ -3,9 +3,20 @@ package AndroidComponents;
 import Interfaces.Button;
 
 public class AndroidButton implements Button {
+    String type = "Android";
+    String text;
+
+    public AndroidButton(String text) {
+        this.text = text;
+    }
+
+    private String getType() {
+        return type;
+    }
+
     @Override
-    public void display(String text) {
-        System.out.println("Button: Android");
+    public void display() {
+        System.out.println("Button: " + getType());
         String contents = "| " + text + " |";
         for (int i = 0; i <= 2; i++) {
             if (i == 0 || i == 2) {
@@ -15,10 +26,5 @@ public class AndroidButton implements Button {
                 System.out.println();
             } else System.out.println(contents);
         }
-    }
-
-    public static void main(String[] args) {
-        AndroidButton button = new AndroidButton();
-        button.display("Button");
     }
 }

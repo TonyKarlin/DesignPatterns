@@ -3,9 +3,20 @@ package AndroidComponents;
 import Interfaces.Checkbox;
 
 public class AndroidCheckbox implements Checkbox {
+    String type = "Android";
+    String text;
+
+    public AndroidCheckbox(String text) {
+        this.text = text;
+    }
+
+    private String getType() {
+        return type;
+    }
+
     @Override
-    public void display(String text) {
-        System.out.println("Checkbox: Android");
+    public void display() {
+        System.out.println("Checkbox: " + getType());
         String contents = "| " + text + " |";
 
         for (int i = 0; i <= 2; i++) {
