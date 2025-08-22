@@ -1,16 +1,18 @@
 package AndroidComponents;
 
+import Interfaces.AbstractUIElements;
+import Interfaces.Brand;
 import Interfaces.TextField;
 
-public class AndroidTextField implements TextField {
-    String type = "Android";
-    String text;
+public class AndroidTextField extends AbstractUIElements implements TextField {
+    private final Brand type = Brand.ANDROID;
+
 
     public AndroidTextField(String text) {
         this.text = text;
     }
 
-    private String getType() {
+    private Brand getType() {
         return type;
     }
 

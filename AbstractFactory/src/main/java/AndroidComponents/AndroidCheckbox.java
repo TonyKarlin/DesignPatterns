@@ -1,16 +1,17 @@
 package AndroidComponents;
 
+import Interfaces.AbstractUIElements;
+import Interfaces.Brand;
 import Interfaces.Checkbox;
 
-public class AndroidCheckbox implements Checkbox {
-    String type = "Android";
-    String text;
+public class AndroidCheckbox extends AbstractUIElements implements Checkbox {
+    private final Brand type = Brand.ANDROID;
 
     public AndroidCheckbox(String text) {
         this.text = text;
     }
 
-    private String getType() {
+    private Brand getType() {
         return type;
     }
 

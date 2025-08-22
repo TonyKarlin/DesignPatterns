@@ -1,16 +1,17 @@
 package AppleComponents;
 
+import Interfaces.AbstractUIElements;
+import Interfaces.Brand;
 import Interfaces.Button;
 
-public class AppleButton implements Button {
-    String type = "Apple";
-    String text;
+public class AppleButton extends AbstractUIElements implements Button {
+    private final Brand type = Brand.APPLE;
 
     public AppleButton(String text) {
         this.text = text;
     }
 
-    private String getType() {
+    private Brand getType() {
         return type;
     }
 

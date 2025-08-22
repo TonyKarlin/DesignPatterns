@@ -1,5 +1,5 @@
 package Interfaces;
 
-public interface Checkbox {
+public interface Checkbox extends UIElement{
     void display();
 }

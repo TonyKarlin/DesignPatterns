@@ -1,16 +1,17 @@
 package AppleComponents;
 
+import Interfaces.AbstractUIElements;
+import Interfaces.Brand;
 import Interfaces.TextField;
 
-public class AppleTextField implements TextField {
-    String type = "Apple";
-    String text;
+public class AppleTextField extends AbstractUIElements implements TextField {
+    private final Brand type = Brand.APPLE;
 
     public AppleTextField(String text) {
         this.text = text;
     }
 
-    private String getType() {
+    private Brand getType() {
         return type;
     }
 

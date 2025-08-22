@@ -1,16 +1,17 @@
 package AppleComponents;
 
+import Interfaces.AbstractUIElements;
+import Interfaces.Brand;
 import Interfaces.Checkbox;
 
-public class AppleCheckbox implements Checkbox {
-    String type = "Apple";
-    String text;
+public class AppleCheckbox extends AbstractUIElements implements Checkbox {
+    private final Brand type = Brand.APPLE;
 
     public AppleCheckbox(String text) {
         this.text = text;
     }
 
-    private String getType() {
+    private Brand getType() {
         return type;
     }
 

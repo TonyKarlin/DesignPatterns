@@ -1,16 +1,16 @@
 package AndroidComponents;
-
+import Interfaces.AbstractUIElements;
+import Interfaces.Brand;
 import Interfaces.Button;
 
-public class AndroidButton implements Button {
-    String type = "Android";
-    String text;
+public class AndroidButton extends AbstractUIElements implements Button {
+    private final Brand type = Brand.ANDROID;
 
     public AndroidButton(String text) {
         this.text = text;
     }
 
-    private String getType() {
+    private Brand getType() {
         return type;
     }
 

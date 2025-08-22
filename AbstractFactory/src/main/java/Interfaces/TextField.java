@@ -1,5 +1,5 @@
 package Interfaces;
 
-public interface TextField {
+public interface TextField extends UIElement{
     void display();
 }

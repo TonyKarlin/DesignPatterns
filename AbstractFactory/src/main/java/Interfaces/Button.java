@@ -1,5 +1,5 @@
 package Interfaces;
 
-public interface Button {
+public interface Button extends UIElement{
     void display();
 }
