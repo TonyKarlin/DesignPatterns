@@ -13,7 +13,7 @@ public interface Tile {
         String grey = "\u001B[37m";
         String reset = "\u001B[0m";
 
-        char letter = getClass().getSimpleName().charAt(0);
+        char letter = getType().charAt(0);
         String color = switch (letter) {
             case 'S' -> green;
             case 'F' -> yellow;
@@ -26,17 +26,7 @@ public interface Tile {
         return color + letter + reset;
     }
 
-    default String getDescription() {
-        Map<String, String> desc = Map.of(
-                "BuildingTile", "This is a Building Tile.",
-                "RoadTile", "This is a Road Tile.",
-                "ForestTile", "This is a Forest Tile.",
-                "WaterTile", "This is a Water Tile.",
-                "SwampTile", "This is a Swamp Tile."
-        );
-
-        return desc.getClass().getSimpleName();
-    }
+    public String getType();
 
     public void action();
 }
