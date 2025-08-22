@@ -1,10 +1,9 @@
-package A_Components;
+package AppleComponents;
 
 import Interfaces.Button;
 
-public class AndroidButton implements Button {
+public class AppleButton implements Button {
     @Override
     public void display() {
-
     }
 }

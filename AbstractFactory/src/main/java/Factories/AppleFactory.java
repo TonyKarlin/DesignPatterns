@@ -1,6 +1,6 @@
 package Factories;
 
-import B_Components.*;
+import AppleComponents.*;
 import Interfaces.*;
 
 public class AppleFactory extends UIFactory{
