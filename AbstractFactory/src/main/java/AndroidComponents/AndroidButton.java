@@ -4,9 +4,9 @@ import Interfaces.Button;
 
 public class AndroidButton implements Button {
     @Override
-    public void display() {
+    public void display(String text) {
         System.out.println("Button: Android");
-        String contents = "| " + "Button" + " |";
+        String contents = "| " + text + " |";
         for (int i = 0; i <= 2; i++) {
             if (i == 0 || i == 2) {
                 for (int j = 0; j < contents.length(); j++) {
@@ -19,6 +19,6 @@ public class AndroidButton implements Button {
 
     public static void main(String[] args) {
         AndroidButton button = new AndroidButton();
-        button.display();
+        button.display("Button");
     }
 }

@@ -1,5 +1,5 @@
 package Interfaces;
 
 public interface TextField {
-    void display();
+    void display(String text);
 }

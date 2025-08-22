@@ -1,5 +1,5 @@
 package Interfaces;
 
 public interface Button {
-    void display();
+    void display(String text);
 }

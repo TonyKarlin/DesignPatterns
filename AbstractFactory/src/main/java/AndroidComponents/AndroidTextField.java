@@ -4,25 +4,18 @@ import Interfaces.TextField;
 
 public class AndroidTextField implements TextField {
     @Override
-    public void display() {
+    public void display(String text) {
         System.out.println("TextField: Android");
-        String contents = "| > " + "                  " + " |";
+        String contents = "| > " + text + " |";
 
-        for (int i = 0;i <= 2; i++) {
+        for (int i = 0; i <= 2; i++) {
             if (i == 0 || i == 2) {
                 for (int j = 0; j < contents.length(); j++) {
                     System.out.print("-");
                 }
                 System.out.println();
-            } else {
-                System.out.println(contents);
-            }
+            } else System.out.println(contents);
         }
-
-    }
-
-    public static void main(String[] args) {
-        AndroidTextField field = new AndroidTextField();
-        field.display();
     }
 }
+

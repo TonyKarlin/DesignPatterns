@@ -1,5 +1,5 @@
 package Interfaces;
 
 public interface Checkbox {
-    void display();
+    void display(String text);
 }
