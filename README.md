@@ -1,3 +1,3 @@
 # DesignPatterns
 
-### Design Pattern course assignments for Ohjelmisto Tuotanto (Software Engineering) at Metropolia University of Applied Sciences.
+### Design Pattern course assignments for Ohjelmistotuotanto (Software Engineering) major at Metropolia University of Applied Sciences.
