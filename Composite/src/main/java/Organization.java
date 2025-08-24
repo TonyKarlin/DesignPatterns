@@ -2,24 +2,16 @@ import Interfaces.Components;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Organization extends Components {
-    protected String name;
     protected double salary;
     private final List<Components> children = new ArrayList<>();
 
     public Organization(String name) {
         super(name);
 
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override
@@ -51,10 +43,9 @@ public class Organization extends Components {
     }
 
     public static void main(String[] args) throws Exception {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
+        XMLBuilder builder = new XMLBuilder();
+        Document document = builder.createDocument();
 
-        Document document = builder.newDocument();
         Element root = document.createElement("root");
         document.appendChild(root);
 
@@ -72,23 +63,25 @@ public class Organization extends Components {
         org.add(dep2);
 
         double totalSalary = org.getSalary();
-        System.out.println("Total amount of salaries: " + totalSalary);
 
+        Node orgNode = builder.addElement("organization", null, root, document);
 
-        Node orgNode = document.createElement("organization");
-        orgNode.appendChild(document.createTextNode(org.getName()));
-        root.appendChild(orgNode);
+        builder.addElement("name", org.getName(), orgNode, document);
+        builder.addElement("total_salary", (totalSalary + "€"), orgNode, document);
 
         for (int i = 0; i < org.getChildCount(); i++) {
             Components department = org.getChild(i);
-            Node departmentNode = orgNode.appendChild(document.createTextNode(department.getName()));
-            for (int j = 1; j < department.getChildCount(); j++) {
+            Node departmentNode = builder.addElement("department", null, orgNode, document);
+            builder.addElement("name", department.getName(), departmentNode, document);
+            for (int j = 0; j < department.getChildCount(); j++) {
                 Components emp = department.getChild(j);
-                Node empNode = document.createElement("employee");
-                empNode.appendChild(document.createTextNode((emp.getName()) + " - " + emp.getSalary()));
-                departmentNode.appendChild(empNode);
+                Node empNode = builder.addElement("employee", null, departmentNode, document);
+                builder.addElement("name", emp.getName(), empNode, document);
+                builder.addElement("salary", emp.getSalary() + "€", empNode, document);
             }
-            orgNode.appendChild(departmentNode);
         }
+
+        String path = "C:\\Users\\tontt\\IdeaProjects\\DesignPatterns\\Composite\\src\\main\\java/output.xml";
+        builder.writeToXML(path, document);
     }
 }

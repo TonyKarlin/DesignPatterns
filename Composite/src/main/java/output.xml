@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <organization>
+        <name>Apple</name>
+        <total_salary>187000.0€</total_salary>
+        <department>
+            <name>HR</name>
+            <employee>
+                <name>Alice</name>
+                <salary>50000.0€</salary>
+            </employee>
+            <employee>
+                <name>Bob</name>
+                <salary>48000.0€</salary>
+            </employee>
+        </department>
+        <department>
+            <name>Sales</name>
+            <employee>
+                <name>Carl</name>
+                <salary>89000.0€</salary>
+            </employee>
+        </department>
+    </organization>
+</root>
