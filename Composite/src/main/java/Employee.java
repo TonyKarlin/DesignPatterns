@@ -1,7 +1,6 @@
 import Interfaces.Components;
 
 public class Employee extends Components {
-    private String name;
     private final double salary;
 
     public Employee(String name, double salary) {
@@ -27,5 +26,10 @@ public class Employee extends Components {
     @Override
     public Components getChild(int index) {
         throw new UnsupportedOperationException("Not supported in leaf.");
+    }
+
+    @Override
+    public int getChildCount() {
+        return 0;
     }
 }

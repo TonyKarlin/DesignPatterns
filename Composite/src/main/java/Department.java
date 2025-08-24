@@ -33,4 +33,9 @@ public class Department extends Components {
     public Components getChild(int index) {
         return this.children.get(index);
     }
+
+    @Override
+    public int getChildCount() {
+        return children.size();
+    }
 }
