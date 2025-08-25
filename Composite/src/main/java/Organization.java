@@ -44,10 +44,7 @@ public class Organization extends Components {
 
     public static void main(String[] args) throws Exception {
         XMLBuilder builder = new XMLBuilder();
-        Document document = builder.createDocument();
-
-        Element root = document.createElement("root");
-        document.appendChild(root);
+        builder.createDocument();
 
         Components org = new Organization("Apple");
         Components dep1 = new Department("HR");
@@ -62,26 +59,24 @@ public class Organization extends Components {
         org.add(dep1);
         org.add(dep2);
 
-        double totalSalary = org.getSalary();
+        Node orgNode = builder.addElement("organization", null, null);
 
-        Node orgNode = builder.addElement("organization", null, root, document);
-
-        builder.addElement("name", org.getName(), orgNode, document);
-        builder.addElement("total_salary", (totalSalary + "€"), orgNode, document);
+        builder.addElement("name", org.getName(), orgNode);
+        builder.addElement("total_salary", (org.getSalary() + "€"), orgNode);
 
         for (int i = 0; i < org.getChildCount(); i++) {
             Components department = org.getChild(i);
-            Node departmentNode = builder.addElement("department", null, orgNode, document);
-            builder.addElement("name", department.getName(), departmentNode, document);
+            Node departmentNode = builder.addElement("department", null, orgNode);
+            builder.addElement("name", department.getName(), departmentNode);
             for (int j = 0; j < department.getChildCount(); j++) {
                 Components emp = department.getChild(j);
-                Node empNode = builder.addElement("employee", null, departmentNode, document);
-                builder.addElement("name", emp.getName(), empNode, document);
-                builder.addElement("salary", emp.getSalary() + "€", empNode, document);
+                Node empNode = builder.addElement("employee", null, departmentNode);
+                builder.addElement("name", emp.getName(), empNode);
+                builder.addElement("salary", emp.getSalary() + "€", empNode);
             }
         }
 
         String path = "C:\\Users\\tontt\\IdeaProjects\\DesignPatterns\\Composite\\src\\main\\java/output.xml";
-        builder.writeToXML(path, document);
+        builder.writeToXML(path);
     }
 }
