@@ -1,6 +1,4 @@
 import Interfaces.Components;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +41,9 @@ public class Organization extends Components {
     }
 
     public static void main(String[] args) throws Exception {
+        // Class to remove bloated code from the main loop
         XMLBuilder builder = new XMLBuilder();
-        builder.createDocument();
+        builder.createDocument();   // Creates a document with a "root" element
 
         Components org = new Organization("Apple");
         Components dep1 = new Department("HR");
@@ -59,11 +58,18 @@ public class Organization extends Components {
         org.add(dep1);
         org.add(dep2);
 
+        // Adds an "organization" parent node to the XML tree.
+        // If parent Node is null, the method uses "root" as the parent.
         Node orgNode = builder.addElement("organization", null, null);
 
+        // Node to display the name of the organization.
         builder.addElement("name", org.getName(), orgNode);
+        // Node to display total salary of the organization.
         builder.addElement("total_salary", (org.getSalary() + "€"), orgNode);
 
+        // The nested for-loops run through the organization tree. Creating intermediate Nodes,
+        // or leaf Nodes when reaching the last child. The inner loop adds "name" and "salary"
+        // Nodes to the employees to display the relevant information.
         for (int i = 0; i < org.getChildCount(); i++) {
             Components department = org.getChild(i);
             Node departmentNode = builder.addElement("department", null, orgNode);
@@ -76,6 +82,7 @@ public class Organization extends Components {
             }
         }
 
+        // Path to output XML file.
         String path = "C:\\Users\\tontt\\IdeaProjects\\DesignPatterns\\Composite\\src\\main\\java/output.xml";
         builder.writeToXML(path);
     }
