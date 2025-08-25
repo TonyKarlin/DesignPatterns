@@ -14,6 +14,12 @@ public class Employee extends Components {
     }
 
     @Override
+    public void printSalary() {
+        System.out.println("Employee: " + name);
+        System.out.println("Salary: " + getSalary() + "€");
+    }
+
+    @Override
     public void add(Components component) {
         throw new UnsupportedOperationException("Not supported in leaf.");
     }

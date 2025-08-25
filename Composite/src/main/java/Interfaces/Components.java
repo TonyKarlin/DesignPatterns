@@ -11,6 +11,7 @@ public abstract class Components {
         return this.name;
     }
     public abstract double getSalary();
+    public abstract void printSalary();
 
     public abstract void add(Components component);
     public abstract void remove(Components component);

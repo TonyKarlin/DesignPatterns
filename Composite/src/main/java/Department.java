@@ -20,6 +20,12 @@ public class Department extends Components {
     }
 
     @Override
+    public void printSalary() {
+        System.out.println("Department: " + name);
+        System.out.println("Departments total paid salaries: " + getSalary() + "€");
+    }
+
+    @Override
     public void add(Components component) {
         this.children.add(component);
     }
