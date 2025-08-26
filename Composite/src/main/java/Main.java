@@ -47,7 +47,7 @@ public class Main {
         }
 
         // Path to output XML file.
-        String path = "C:\\Users\\tontt\\IdeaProjects\\DesignPatterns\\Composite\\src\\main\\java/output.xml";
+        String path = "C:\\Users\\tonyk\\IdeaProjects\\DesignPatterns\\Composite\\src\\main\\java\\output.xml";
         builder.writeToXML(path);
     }
 }

@@ -20,6 +20,7 @@ public class Organization extends Components {
 
     @Override
     public double getSalary() {
+        this.salary = 0;
         for (Components child : children) {
             this.salary += child.getSalary();
         }
