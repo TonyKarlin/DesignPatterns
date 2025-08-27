@@ -40,6 +40,10 @@ public class WeatherStation implements Runnable {
     public void activeObservers() {
         System.out.println("\nCurrently active observers: ");
         for (Observer observer : observers) {
+            if (observers.isEmpty()) {
+                System.out.println("No active observers.");
+                return;
+            }
             System.out.println(observer.getName());
         }
         System.out.println();
