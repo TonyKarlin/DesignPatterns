@@ -1,4 +1,4 @@
-public class ObservingWeather extends Observer{
+public class ObservingWeather extends Observer {
     private WeatherStation observable;
 
     public ObservingWeather(String name, WeatherStation observable) {
@@ -11,5 +11,6 @@ public class ObservingWeather extends Observer{
     public void update() {
         System.out.println("Observer: " + this.getName());
         System.out.println("Has been notified of the temperature changes!");
+        System.out.println(observable.getTemperature() + "°C\n");
     }
 }

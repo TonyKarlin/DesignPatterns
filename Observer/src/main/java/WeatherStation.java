@@ -10,22 +10,29 @@ public class WeatherStation implements Runnable {
         this.temperature = (int) ((Math.random() < 0.5 ? -1 : 1) * (Math.random() * 30));
     }
 
+    public int getTemperature() {
+        return temperature;
+    }
+
     @Override
     public void run() {
         long start = System.currentTimeMillis();
+        System.out.println("Simulation started!");
+        System.out.println("Starting temperature " + getTemperature() + "°C\n");
+
         do {
             try {
                 Thread.sleep((int) (Math.random() * 2001) + 1000);
                 int rand = (int) (Math.random() * 3);
                 if ((rand == 1 && temperature < 45) || (rand == 0 && temperature > -40)) {
                     temperature += (rand == 1) ? 1 : -1;
-                    System.out.println("Temp updated: " + temperature);
                     notifyObservers();
-                }
+                } else System.out.println("Temperature remains the same: " + temperature + "°C\n");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         } while (System.currentTimeMillis() - start < 60000);
+
         System.out.println("Simulation ended!");
     }
 
