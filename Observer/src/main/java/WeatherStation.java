@@ -3,6 +3,7 @@ import java.util.List;
 
 public class WeatherStation implements Runnable {
     private final List<Observer> observers = new ArrayList<>();
+    private final List<Observer> removedObservers = new ArrayList<>();
     private int temperature;
 
 
@@ -16,24 +17,24 @@ public class WeatherStation implements Runnable {
 
     @Override
     public void run() {
-        long start = System.currentTimeMillis();
-        System.out.println("Simulation started!");
         System.out.println("Starting temperature " + getTemperature() + "°C\n");
 
-        do {
+        while (true) {
             try {
                 Thread.sleep((int) (Math.random() * 2001) + 1000);
                 int rand = (int) (Math.random() * 3);
                 if ((rand == 1 && temperature < 45) || (rand == 0 && temperature > -40)) {
                     temperature += (rand == 1) ? 1 : -1;
                     notifyObservers();
+                    if (observers.isEmpty()) {
+                        System.out.print("Only the station knows the details about the weather change: ");
+                        System.out.println(getTemperature() + "°C\n");
+                    }
                 } else System.out.println("Temperature remains the same: " + temperature + "°C\n");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        } while (System.currentTimeMillis() - start < 60000);
-
-        System.out.println("Simulation ended!");
+        }
     }
 
     public void activeObservers() {
@@ -52,6 +53,7 @@ public class WeatherStation implements Runnable {
     public void removeObserver(Observer observer) {
         System.out.println(observer.getName() + " has been removed from observers!");
         observers.remove(observer);
+
     }
 
     public void notifyObservers() {
@@ -60,3 +62,4 @@ public class WeatherStation implements Runnable {
         }
     }
 }
+
