@@ -5,6 +5,8 @@ public class WeatherStation implements Runnable {
     private final List<Observer> observers = new ArrayList<>();
     private final List<Observer> removedObservers = new ArrayList<>();
     private int temperature;
+    private int minTemp = -40;
+    private int maxTemp = 45;
 
 
     public WeatherStation() {
@@ -15,22 +17,36 @@ public class WeatherStation implements Runnable {
         return temperature;
     }
 
+    private volatile boolean running = true;
+
+    public boolean getRunning() {
+        return running;
+    }
+
+    public void stop() {
+        System.out.println("Stopping the simulation...");
+        running = false;
+    }
+
     @Override
     public void run() {
         System.out.println("Starting temperature " + getTemperature() + "°C\n");
-
-        while (true) {
+        long startTime = System.currentTimeMillis();
+        while (running) {
             try {
                 Thread.sleep((int) (Math.random() * 2001) + 1000);
                 int rand = (int) (Math.random() * 3);
-                if ((rand == 1 && temperature < 45) || (rand == 0 && temperature > -40)) {
-                    temperature += (rand == 1) ? 1 : -1;
-                    notifyObservers();
+                if ((rand == 1 && temperature < maxTemp) || (rand == 0 && temperature > minTemp)) {
                     if (observers.isEmpty()) {
                         System.out.print("Only the station knows the details about the weather change: ");
                         System.out.println(getTemperature() + "°C\n");
+                        continue;
                     }
+                    temperature += (rand == 1) ? 1 : -1;
+                    notifyObservers();
+
                 } else System.out.println("Temperature remains the same: " + temperature + "°C\n");
+                if (System.currentTimeMillis() - startTime >= 120000) stop();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

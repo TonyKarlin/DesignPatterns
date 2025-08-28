@@ -11,6 +11,7 @@ public class Main {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        if (!weatherStation.getRunning()) return;
         weatherStation.removeObserver(obs1);
         weatherStation.activeObservers();
 
