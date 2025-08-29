@@ -1,18 +1,19 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Logger {
     private static Logger instance;
-    private final String path = "C:\\Users\\tonyk\\IdeaProjects\\DesignPatterns\\Singleton\\src\\main\\java";
     private File file;
-    private final List<String> logs = new ArrayList<>();
     private FileWriter writer;
 
     private Logger() {
-        this.file = new File(path, "log.txt");
+        this.file = new File("log.txt");
+        initializeWriter();
     }
 
     public static Logger getInstance() {
@@ -24,47 +25,52 @@ public class Logger {
 
     public void setFilename(String filename) {
         if (!this.file.getName().equals(filename)) {
-            File newFile = new File(path, filename);
             close();
-            boolean deleted = file.delete();
-            if (!deleted) {
-                System.err.println("Failed to delete file: " + file.getAbsolutePath());
-            }
-            this.file = newFile;
-            if (!logs.isEmpty()) rewriteFile();
+            if (file.length() > 0) {
+                File newFile = new File(filename);
+                rewriteFile(newFile);
+                if (this.file.delete()) System.out.println("Deleted the file: " + this.file.getName());
+                this.file = newFile;
+
+            } else this.file = new File(filename);
+            initializeWriter();
         } else System.out.println("Filename is the same as the current one.");
     }
 
     public void writeToFile(String message) {
-        try {
-            writer = new FileWriter(file.getName(), true);
+        try (FileWriter writer = new FileWriter(file.getName(), true)) {
             writer.write(message + "\n");
-            if (!logs.contains(message)) {
-                logs.add(message);
-            }
-            writer.close();
+            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void rewriteFile() {
-        try {
-            writer = new FileWriter(file.getName(), true);
-            for (String log : logs) {
-                writer.write(log + "\n");
+    public void rewriteFile(File newFile) {
+        if (file != null && file.length() > 0) {
+            try (Scanner reader = new Scanner(file);
+                 FileWriter tempWriter = new FileWriter(newFile)) {
+                while (reader.hasNextLine()) {
+                    String data = reader.nextLine();
+                    tempWriter.write(data + "\n");
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            writer.close();
+        }
+    }
+
+    public void initializeWriter() {
+        try {
+            writer = new FileWriter(file, true);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public void close() {
         try {
-            if (writer != null) {
-                writer.close();
-            }
+            if (writer != null) writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
