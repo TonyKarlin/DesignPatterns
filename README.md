@@ -13,6 +13,7 @@ in my case. ([link](https://github.com/TonyKarlin/DesignPatterns/tree/main/Abstr
 **Composite** - A simple tree representing an organization. Results written in XML
 format. ([link](https://github.com/TonyKarlin/DesignPatterns/tree/main/Composite))
 
-**Observer** - A simple weather simulation that has Observers subscribing to a WeatherStation to receive
-weather updates. WeatherStation runs on a separate Thread so there aren't any obstructions in updating the weather during runtime.([link](https://github.com/TonyKarlin/DesignPatterns/tree/main/Observer/src/main/java))
+**Observer** - A simple weather simulation where Observers subscribe to a WeatherStation to receive weather updates. The
+WeatherStation runs on a separate thread, ensuring that weather updates occur smoothly without blocking the main
+program. ([link](https://github.com/TonyKarlin/DesignPatterns/tree/main/Observer/src/main/java))
 
