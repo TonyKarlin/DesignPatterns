@@ -1,4 +1,4 @@
-package Game.Poker;
+package Game.Logic;
 
 public abstract class Game {
 

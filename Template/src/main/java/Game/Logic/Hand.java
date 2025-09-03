@@ -1,4 +1,4 @@
-package Game.Poker;
+package Game.Logic;
 
 import Game.Cards.Card;
 import Game.Cards.DeckOfCards;
