@@ -29,7 +29,6 @@ public abstract class State {
                     this.fight();
                     character.gainXp(Experience.FIGHT.getValue());
                     break;
-
             }
         } else if (choice == getOptions().length) {
             return "EXIT";

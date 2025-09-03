@@ -1,4 +1,4 @@
-public class ExpertLevel extends State{
+public class ExpertLevel extends State {
     private final String[] options = {"Train", "Meditate", "Fight", "Quit"};
 
     public ExpertLevel(Character character) {
@@ -11,7 +11,13 @@ public class ExpertLevel extends State{
 
     @Override
     public void train() {
-
+        try {
+            System.out.println("You've initiated your training...");
+            Thread.sleep(2500);
+            System.out.println("Working your way up!");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
