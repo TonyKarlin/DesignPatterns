@@ -1,3 +1,5 @@
+package Game;
+
 public enum Experience {
     TRAIN(1),
     MEDITATE(2),

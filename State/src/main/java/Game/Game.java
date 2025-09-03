@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package Game;
 
 public class Game {
     private Character player;
@@ -23,7 +23,7 @@ public class Game {
             System.out.println("Challenge awaits. Your journey begins as a " + player.getLevel().toString() + ".");
             while (!player.getLevel().toString().equalsIgnoreCase("Master")) {
                 if (player.getLevel() == null) {
-                    System.out.println("Character has no level");
+                    System.out.println("Game.Character has no level");
                     return;
                 }
 
@@ -34,7 +34,6 @@ public class Game {
                     return;
                 }
             }
-            System.out.println("You've MASTERED the Game!");
             Thread.sleep(1000);
             System.out.println("Exiting...");
         } catch (Exception e) {

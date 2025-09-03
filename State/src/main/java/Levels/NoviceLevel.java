@@ -1,3 +1,7 @@
+package Levels;
+
+import Game.Character;
+
 public class NoviceLevel extends State {
     private final String[] options = {"Train", "Quit"};
 

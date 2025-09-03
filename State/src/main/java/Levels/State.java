@@ -1,3 +1,8 @@
+package Levels;
+import Game.Experience;
+import Game.UserInputs;
+import Game.Character;
+
 public abstract class State {
     public final Character character;
 
@@ -13,7 +18,7 @@ public abstract class State {
         character.printInfo();
         int choice = UserInputs.readUserInput(character.getLevel().getOptions());
         if (choice >= 1 && choice <= getOptions().length - 1) {
-            System.out.println("You chose to " + getOptions()[choice - 1]);
+            System.out.println("You chose to " + getOptions()[choice - 1] + ".\n");
             switch (getOptions()[choice - 1]) {
                 case "Train":
                     this.train();
