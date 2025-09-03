@@ -13,7 +13,11 @@ public class Dealer extends Game{
 
     @Override
     public void initializeGame(int numberOfPlayers) {
-
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Hand hand = new Hand(type.getValue());
+            hand.deal(deck);
+            hand.printHand("Player " + (i + 1));
+        }
     }
 
     @Override
