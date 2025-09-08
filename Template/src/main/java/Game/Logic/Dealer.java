@@ -37,7 +37,6 @@ public class Dealer extends Game {
         dealerHand.deal(deck);
         if (dealerHand.isBlackjack()) {
             System.out.println("Dealer has a natural Blackjack!");
-            System.out.println("Dealer's hand: ");
             dealerHand.printHand("Dealer");
             dealerHand.stand();
         } else {
@@ -87,7 +86,6 @@ public class Dealer extends Game {
             Card card = deck.getDeck().removeFirst();
             dealerHand.addCard(card);
         }
-        System.out.println("\nDealer's hand:");
         dealerHand.printHand("Dealer");
         System.out.println("Dealer's score: " + dealerHand.getScore());
 
