@@ -1,3 +1,4 @@
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -15,8 +16,10 @@ public class HistoryView {
     public void show() {
         Stage stage = new Stage();
         VBox vBox = new VBox(10);
+        Insets insets = new Insets(10, 10, 10, 10);
         ListView<String> listView = new ListView<>();
         Label label = new Label("Select a state to restore (10 previous actions are shown)");
+        vBox.setPadding(insets);
 
         for (IMemento memento : controller.getUndoHistory()) {
             listView.getItems().add(memento.getTimestamp());
@@ -31,7 +34,7 @@ public class HistoryView {
         });
 
         vBox.getChildren().addAll(label, listView);
-        stage.setScene(new Scene(listView, 300, 300));
+        stage.setScene(new Scene(vBox, 350, 300));
         stage.setTitle("History");
         stage.show();
     }

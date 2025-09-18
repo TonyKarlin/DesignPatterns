@@ -46,15 +46,17 @@ public class Gui extends Application {
         Label label = new Label("Press Ctrl-Z to undo the last change, or Ctrl-Y to redo it.");
         label.setPadding(insets);
 
-        Button historyButton = new Button("Show History");
-        historyButton.setOnAction(event -> new HistoryView(controller).show());
 
         // create a VBox that contains the HBox and the CheckBox
-        VBox vBox = new VBox(hBox, checkBox, label, historyButton);
+        VBox vBox = new VBox(hBox, checkBox, label);
         // call controller when the CheckBox is clicked
         checkBox.setOnAction(event -> {
             controller.setIsSelected(checkBox.isSelected());
         });
+
+        Button historyButton = new Button("Show History");
+        historyButton.setOnAction(event -> new HistoryView(controller).show());
+        vBox.getChildren().add(historyButton);
 
         // Set the HBox to be the root of the Scene
         Scene scene = getScene(vBox);
