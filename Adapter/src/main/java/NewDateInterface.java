@@ -12,4 +12,6 @@ public interface NewDateInterface {
     int getYear();
 
     void advanceDays(int days);
+
+    String getDate();
 }

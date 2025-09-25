@@ -6,8 +6,11 @@ public class CalendarToNewDateAdapter implements NewDateInterface {
     @Override
     public void setDay(int day) {
         int month = calendar.get(Calendar.MONTH) + 1;
-        if (day > 31) {
-            System.out.println("Days cannot exceed 31");
+        int year = calendar.get(Calendar.YEAR);
+        int maxDays = getMaxDaysInMonth(month, year);
+
+        if (day < 1 || day > maxDays) {
+            System.out.println("Invalid day. Must be between 1 and " + maxDays + " for the current month and year.");
             return;
         }
         calendar.set(Calendar.DATE, day);
@@ -15,11 +18,11 @@ public class CalendarToNewDateAdapter implements NewDateInterface {
 
     @Override
     public void setMonth(int month) {
-        if (month > 12) {
-            System.out.println("Month cannot exceed 12");
+        if (month < 1 || month > 12) {
+            System.out.println("Invalid month. Must be between 1 and 12.");
             return;
         }
-        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.MONTH, month - 1);
     }
 
     @Override
@@ -45,5 +48,17 @@ public class CalendarToNewDateAdapter implements NewDateInterface {
     @Override
     public void advanceDays(int days) {
         calendar.add(Calendar.DATE, days);
+    }
+
+    @Override
+    public String getDate() {
+        return "Date: " + getDay() + "/" + getMonth() + "/" + getYear();
+    }
+
+    private int getMaxDaysInMonth(int month, int year) {
+        Calendar tempCalendar = Calendar.getInstance();
+        tempCalendar.set(Calendar.YEAR, year);
+        tempCalendar.set(Calendar.MONTH, month - 1); // Calendar months are 0-based
+        return tempCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
 }
