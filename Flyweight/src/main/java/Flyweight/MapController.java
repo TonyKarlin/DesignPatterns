@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapController {
-    private static final int width = 10;
-    private static final int height = 10;
+    private final int width = 10;
+    private final int height = 10;
     private final List<Tile> tiles;
 
     public MapController(Map map) {
-        map.display(width, height);
+        map.display(width, height); // Displays the map in the console for verification
         this.tiles = new ArrayList<>();
+
+        // Initializes the game tiles
         for (int i = 0; i < width * height; i++) {
             tiles.add(map.createTile());
         }
