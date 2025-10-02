@@ -5,5 +5,5 @@ public interface ChatClient {
 
     String getUsername();
 
-    void sendMessage(String content);
+    void sendMessage(String content, String recipient);
 }

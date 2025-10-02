@@ -19,10 +19,20 @@ public class ConcreteChat implements ChatMediator {
     }
 
     @Override
-    public void sendMessage(Message message) {
-        for (ChatClient client : clients) {
-            if (!client.getUsername().equals(message.getUsername())) {
-                client.receiveMessage(message);
+    public void sendMessage(Message message, String recipient) {
+        if (recipient == null || recipient.isEmpty()) {
+            // To all
+            for (ChatClient client : clients) {
+                if (!client.getUsername().equals(message.getUsername())) {
+                    client.receiveMessage(message);
+                }
+            }
+        } else {
+            // To one
+            for (ChatClient client : clients) {
+                if (client.getUsername().equals(recipient)) {
+                    client.receiveMessage(message);
+                }
             }
         }
     }

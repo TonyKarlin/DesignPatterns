@@ -20,7 +20,6 @@ public class ConcreteChatClient implements ChatClient {
         if (controller != null) {
             controller.displayReceivedMessage(formattedMessage);
         }
-        System.out.println(formattedMessage);
     }
 
     @Override
@@ -29,9 +28,9 @@ public class ConcreteChatClient implements ChatClient {
     }
 
     @Override
-    public void sendMessage(String content) {
+    public void sendMessage(String content, String recipient) {
         Message message = messageFactory.createMessage(this.username, content);
-        mediator.sendMessage(message);
+        mediator.sendMessage(message, recipient);
     }
 
     public MessageFactory getMessageFactory() {
