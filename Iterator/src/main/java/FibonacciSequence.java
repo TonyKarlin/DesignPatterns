@@ -18,7 +18,7 @@ public class FibonacciSequence implements Sequence {
         return array;
     }
 
-    // Another way of doing it through recursion, but I think easier to understand and use with the other methods
+    // Another way of doing it through recursion, but I think it's easier to understand and to use with the other methods
     public int recursiveSequence(int data) {
         if (data <= 1) {
             return data;
