@@ -64,20 +64,20 @@ public class ApiFacade implements Facade {
         return con;
     }
 
-    private String buildContents(
-            HttpURLConnection connection)
-            throws IOException {
+    private String buildContents(HttpURLConnection connection) throws IOException {
+        int status = connection.getResponseCode();
+        if (status != HttpURLConnection.HTTP_OK) {
+            throw new IOException("HTTP error code: " + status);
+        }
 
         try (BufferedReader in = new BufferedReader(
                 new InputStreamReader(connection.getInputStream())
         )) {
             String inputLine;
             StringBuilder content = new StringBuilder();
-
             while ((inputLine = in.readLine()) != null) {
                 content.append(inputLine);
             }
-
             return content.toString();
         } finally {
             connection.disconnect();
