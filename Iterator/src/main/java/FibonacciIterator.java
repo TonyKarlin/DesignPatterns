@@ -23,12 +23,14 @@ public class FibonacciIterator implements Iterator<Integer> {
 
     // Initialization
     public void reset() {
-        this.data = new int[]{1, 1};
+        this.data = new int[]{0, 1};
     }
 
     @Override
     public boolean hasNext() {
-        return getHead() != 0; // Probably not the best way of doing this, but I wanted it to be true for my while-loop
+        // Calculates the next number in the sequence, casting to long to avoid overflow
+        long next = (long) getTail() + (long) getHead();
+        return next <= Integer.MAX_VALUE; // Checks if the next number in the sequence exceeds the limit
     }
 
     @Override
@@ -39,7 +41,6 @@ public class FibonacciIterator implements Iterator<Integer> {
                 getHead());
 
         data = sequence.nextSequence(data); // Process the next sequence and store the updated numbers in data array[]
-
         return getHead(); // returns the new head of the array to display the next number in the sequence
     }
 }

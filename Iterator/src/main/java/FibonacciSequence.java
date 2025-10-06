@@ -18,8 +18,27 @@ public class FibonacciSequence implements Sequence {
         return array;
     }
 
+    // Another way of doing it through recursion, but I think easier to understand and use with the other methods
+    public int recursiveSequence(int data) {
+        if (data <= 1) {
+            return data;
+        }
+        return (recursiveSequence(data - 1) + recursiveSequence(data - 2));
+    }
+
     @Override
     public Iterator<Integer> iterator() {
         return new FibonacciIterator(this);
+    }
+
+    public static void main(String[] args) {
+        FibonacciSequence sequence = new FibonacciSequence();
+
+        int i = 1;
+        while (i <= 10) {
+            int val = sequence.recursiveSequence(i);
+            System.out.println("Iteration: " + i + "\nValue: " + val);
+            i++;
+        }
     }
 }
